@@ -27,22 +27,22 @@ var CartoonTastic = {
 	    var queryURL = "http://api.giphy.com/v1/gifs/search?q=cartoon+" + cartoon + "&api_key=dc6zaTOxFJmzC&limit=10";
 	    var self = this;
 
+		// Deletes the cartoons prior to adding new cartoons (this is necessary otherwise you will have repeat buttons)
+		$('#cartoonsView').empty();
+
 		// Creates AJAX call for the specific cartoon being 
 		$.ajax({url: queryURL, method: 'GET'}).done(function(response) {
 
-			//** NOTE: Change this to create a array img divs to
-			//** be displayed.  For now, just get the first one.
-			//** In the end, this may not be needed if I can get
-			//** to the data- attributes in the DOM.  They are getting
-			//** set correctly but the data() calls are not retrieving
-			//** them when needed, i.e. when an image is clicked.
-			self.results = response.data;
+			var list = self.results = response.data;
 
-			// Creates a generic div to hold the cartoon
-			var cartoonDiv = self.buildDiv(self.results[0]);
+			for(var i = 0; i < list.length; i++) {
 
-			// Put the entire Cartoon above the previous cartoons.
-			$('#cartoonsView').prepend(cartoonDiv);
+				// Creates a generic div to hold the cartoon
+				var cartoonDiv = self.buildDiv(list[i]);
+
+				// Put the entire Cartoon above the previous cartoons.
+				$('#cartoonsView').prepend(cartoonDiv);
+			}
 		});
 
 		self.renderButtons();
@@ -83,7 +83,7 @@ var CartoonTastic = {
 	// Generic function for displaying cartoon data 
 	renderButtons: function(){ 
 
-		// Deletes the cartoons prior to adding new cartoons (this is necessary otherwise you will have repeat buttons)
+		// Deletes the cartoon buttons prior to adding new ones (this is necessary otherwise you will have repeat buttons)
 		$('#buttonsView').empty();
 
 		// Loops through the array of cartoons

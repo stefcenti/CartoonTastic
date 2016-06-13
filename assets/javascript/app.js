@@ -49,7 +49,7 @@ $(document).ready(function(){
 			//** NOTE: Change this to put the still and animated images
 			//** in the cartoons array.
 			// Creates an element to hold the image 
-			var cartoonImage = $('<img> class=".image"');
+			var cartoonImage = $('<img class="image">');
 
 			// start with the moving image
 			cartoonImage.attr('src', results[0].images.fixed_height.url);
@@ -138,10 +138,10 @@ $(document).ready(function(){
 		*/
 
     	//---------------FILL IN CODE HERE FOR STEP THREE----------------------------
-var a = $(image);
-var b = $(image).data('animate');
-var c = $(image).data('still');
-var d = $(image).data('state');
+var a = $('image');
+var b = $('image').data('animate');
+var c = $('image').data('still');
+var d = $('image').data('state');
 console.log("animate: " + b);
 console.log("still: " + c);
 console.log("state: " + state);
@@ -153,10 +153,10 @@ console.log("state: " + state);
             $(this).attr('src', $(this).data('still'));
             $(this).attr('data-state', 'still');
         }
-var a = $(image);
-var b = $(image).data('animate');
-var c = $(image).data('still');
-var d = $(image).data('state');
+var a = $('image');
+var b = $('image').data('animate');
+var c = $('image').data('still');
+var d = $('image').data('state');
 console.log("animate: " + b);
 console.log("still: " + c);
 console.log("state: " + state);
